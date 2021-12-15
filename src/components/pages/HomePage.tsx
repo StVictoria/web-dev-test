@@ -5,6 +5,7 @@ import ReactImg from "../../assets/images/react.png";
 import ReduxImg from "../../assets/images/redux.png";
 import InstagramImg from "../../assets/images/instagram.png";
 import "./HomePage.scss";
+import { TestNames } from "../../enums/testNames";
 
 function HomePage() {
   return (
@@ -12,9 +13,9 @@ function HomePage() {
       <section className="HomePage-Section">
         <SectionTitle title="Доступные тесты" />
         <div className="HomePage-TechnologyList">
-          <TechnologyTile isAvaliable={true} src={JSImg} />
-          <TechnologyTile isAvaliable={false} src={ReactImg} />
-          <TechnologyTile isAvaliable={false} src={ReduxImg} />
+          <TechnologyTile isAvaliable={true} src={JSImg} technology={TestNames.JavaScript} />
+          <TechnologyTile isAvaliable={false} src={ReactImg} technology={TestNames.React}/>
+          <TechnologyTile isAvaliable={false} src={ReduxImg} technology={TestNames.Redux}/>
         </div>
       </section>
       <section className="HomePage-Section">
@@ -30,7 +31,7 @@ function HomePage() {
               href="https://www.instagram.com/victoria_step_nova/"
               className="HomePage-InstagramLink"
             >
-              <img src={InstagramImg} />
+              <img src={InstagramImg} alt="Instagram Contact"/>
             </a>
             <p>
               Так же приятно услышать общие отзывы об опыте использования сайта
