@@ -13,13 +13,13 @@
   src: url("../assets/fonts/NunitoSans-Light.ttf") format("truetype");
 }
 
-::-webkit-scrollbar{
-    width: 10px;
-    background-color: $black;
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: $black;
 }
-::-webkit-scrollbar-thumb{
-    background-color: $mint;
-    border-radius: 10px;
+::-webkit-scrollbar-thumb {
+  background-color: $mint;
+  border-radius: 10px;
 }
 
 html,
@@ -42,7 +42,7 @@ h2 {
   font-size: 16px;
 }
 
-button{
-    border: none;
-    outline: none;
+button {
+  border: none;
+  outline: none;
 }
