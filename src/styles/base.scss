@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 @font-face {
   font-family: "Nunito Sans SemiBold";
   src: url("../assets/fonts/NunitoSans-SemiBold.ttf") format("truetype");
@@ -9,6 +11,15 @@
 @font-face {
   font-family: "Nunito Sans Light";
   src: url("../assets/fonts/NunitoSans-Light.ttf") format("truetype");
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+    background-color: $black;
+}
+::-webkit-scrollbar-thumb{
+    background-color: $mint;
+    border-radius: 10px;
 }
 
 html,
