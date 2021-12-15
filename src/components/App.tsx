@@ -5,7 +5,7 @@ import './App.scss';
 function App() {
   return (
     <div className="App">
-     <Header title="JavaScript" />
+     <Header title="JavaScript & React & Redux" />
       <main className="App-Main">
         <HomePage />
       </main>

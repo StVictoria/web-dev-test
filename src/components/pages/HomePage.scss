@@ -1,3 +1,25 @@
-.HomePage-TechnologyList{
-    display: flex;
+.HomePage-Section {
+  margin-bottom: 80px;
+}
+
+.HomePage-TechnologyList {
+  display: flex;
+}
+
+.HomePage-InstagramBlock {
+  display: flex;
+  align-items: center;
+}
+
+.HomePage-InstagramLink {
+  width: 30px;
+  margin-right: 10px;
+
+  img {
+    width: inherit;
+  }
+
+  p{
+      margin-top: 6px;
+  }
 }
