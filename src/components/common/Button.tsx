@@ -8,7 +8,7 @@ interface IButton {
 function Button({ icon, title, onClick }: IButton) {
   return (
     <button className="Button" onClick={onClick}>
-      {icon}
+      {icon && <img src={icon} alt="#" className="Button-Icon" />}
       {title}
     </button>
   );

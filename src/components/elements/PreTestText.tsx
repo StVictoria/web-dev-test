@@ -1,4 +1,6 @@
 import Button from "../common/Button";
+import "./PreTestText.scss";
+import RocketImg from '../../assets/images/shuttle.png'
 
 interface IPreTestText {
   handleClick: () => void;
@@ -7,7 +9,7 @@ interface IPreTestText {
 function PreTestText({ handleClick }: IPreTestText) {
   return (
     <>
-      <div>
+      <div className="PreTestText">
         <p>
           Напоминаю, что все тесты на сайте отличаются от тех, к которым мы
           привыкли. Эти тесты скорее похожи на билеты, контроль ответов на
@@ -42,10 +44,11 @@ function PreTestText({ handleClick }: IPreTestText) {
         </p>
       </div>
       <p className="PreTestText-DocsInfo">
-        Тест создан на основе документации с сайта learn.javascript.ru Если ты
-        не знаешь данной технологии, лучше сначала ознакомиться с документацией
+        Тест создан на основе документации с сайта learn.javascript.ru <br />
+        Если ты не знаешь данную технологию, лучше сначала ознакомиться с
+        документацией
       </p>
-      <Button title="Начать тест" onClick={handleClick}></Button>
+      <Button title="Начать тест" onClick={handleClick} />
     </>
   );
 }

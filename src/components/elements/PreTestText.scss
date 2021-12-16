@@ -1,6 +1,11 @@
 @import "../../styles/variables.scss";
 
+.PreTestText{
+  max-width: 60%;
+}
+
 .PreTestText-DocsInfo {
   font-size: 14px;
   color: $grey;
+  max-width: 50%;
 }

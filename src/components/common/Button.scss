@@ -1,8 +1,24 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
-.Button{
-    width: 130px;
-    height: 40px;
-    background-color: $mint;
-    border-radius: 10px;
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 40px;
+  background-color: $mint;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+
+  &:hover {
+    color: $white;
+    background-color: inherit;
+    border: 1px solid $mint;
+  }
+}
+
+.Button-Icon {
+  width: 20px;
+  margin-right: 5px;
 }

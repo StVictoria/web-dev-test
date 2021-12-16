@@ -33,7 +33,7 @@ function TestPage({ testName }: ITestPage) {
         />
         <SectionTitle title={`Тест по ${testName}`} />
       </div>
-      {isStarted ? <PreTestText handleClick={startTest} /> : <Test />}
+      {!isStarted ? <PreTestText handleClick={startTest} /> : <Test />}
     </>
   );
 }
