@@ -14,8 +14,8 @@ function HomePage() {
         <SectionTitle title="Доступные тесты" />
         <div className="HomePage-TechnologyList">
           <TechnologyTile isAvaliable={true} src={JSImg} technology={TestNames.JavaScript} />
-          <TechnologyTile isAvaliable={false} src={ReactImg} technology={TestNames.React}/>
-          <TechnologyTile isAvaliable={false} src={ReduxImg} technology={TestNames.Redux}/>
+          <TechnologyTile isDisable isAvaliable={false} src={ReactImg} technology={TestNames.React}/>
+          <TechnologyTile isDisable isAvaliable={false} src={ReduxImg} technology={TestNames.Redux}/>
         </div>
       </section>
       <section className="HomePage-Section">
@@ -24,7 +24,7 @@ function HomePage() {
           <p>
             Проект изначально был адаптирован под меня и мой личный путь
             развития, <br /> поэтому если есть какие-либо предложения по
-            улучшению сайта, <br /> пишите мне в инстаграм 
+            улучшению сайта, <br /> жду вас в инстаграме
           </p>
           <div className="HomePage-InstagramBlock">
             <a

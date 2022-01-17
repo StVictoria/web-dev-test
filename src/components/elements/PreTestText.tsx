@@ -1,12 +1,18 @@
 import Button from "../common/Button";
 import "./PreTestText.scss";
-import RocketImg from '../../assets/images/shuttle.png'
+import RocketImg from "../../assets/images/shuttle.png";
+import { TestNames } from "../../enums/testNames";
 
 interface IPreTestText {
+  testName: string;
   handleClick: () => void;
 }
 
-function PreTestText({ handleClick }: IPreTestText) {
+function PreTestText({ testName, handleClick }: IPreTestText) {
+  const js = testName === TestNames.JavaScript;
+  const react = testName === TestNames.React;
+  const redux = testName === TestNames.Redux;
+
   return (
     <>
       <div className="PreTestText">
@@ -44,7 +50,20 @@ function PreTestText({ handleClick }: IPreTestText) {
         </p>
       </div>
       <p className="PreTestText-DocsInfo">
-        Тест создан на основе документации с сайта learn.javascript.ru <br />
+        Тест создан на основе документации с сайта{" "}
+        <a
+          href={
+            js
+              ? "https://learn.javascript.ru/"
+              : react
+              ? "https://reactjs.org/"
+              : "https://redux.js.org/"
+          }
+          className="PreTestText-Link"
+        >
+          {js ? "JavaScript" : react ? "React" : "Redux"}
+        </a>
+        <br />
         Если ты не знаешь данную технологию, лучше сначала ознакомиться с
         документацией
       </p>
