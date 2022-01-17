@@ -6,6 +6,7 @@ import SectionTitle from "../common/SectionTitle";
 import { TestNames } from "../../enums/testNames";
 import PreTestText from "../elements/PreTestText";
 import Test from "../elements/Test";
+import javascriptData from '../../utils/javascriptData.json'
 import "./TestPage.scss";
 
 interface ITestPage {
@@ -33,7 +34,11 @@ function TestPage({ testName }: ITestPage) {
         />
         <SectionTitle title={`Тест по ${testName}`} />
       </div>
-      {!isStarted ? <PreTestText testName={testName} handleClick={startTest} /> : <Test />}
+      {!isStarted ? (
+        <PreTestText testName={testName} handleClick={startTest} />
+      ) : (
+        <Test data={TestNames.JavaScript ? javascriptData.data : null}/>
+      )}
     </>
   );
 }
