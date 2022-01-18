@@ -25,9 +25,10 @@ function Test({ data }: ITest) {
   };
 
   const handleSubmitTest = () => {
-    answers.length === data.length ? console.log("OVER") : console.log("Ответьте на все вопросы")
-    
-  }
+    answers.length === data.length
+      ? console.log("OVER")
+      : console.log("Ответьте на все вопросы");
+  };
 
   const renderData = () =>
     data.map((item: any, index: number) => (
@@ -49,7 +50,7 @@ function Test({ data }: ITest) {
               name={`radio-${index}`}
               className="Test-RadionButton"
             />
-            Знаю
+            Ответил(а) верно
           </label>
           <label className="Test-UserAnswer">
             <input
@@ -57,7 +58,7 @@ function Test({ data }: ITest) {
               name={`radio-${index}`}
               className="Test-RadionButton"
             />
-            Не знаю
+            Ответил(а) неверно
           </label>
         </div>
         <div className="Test-AnswerBlock">
