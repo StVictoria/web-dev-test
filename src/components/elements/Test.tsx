@@ -30,11 +30,19 @@ function Test({ data }: ITest) {
         </div>
         <div className="Test-UserAnswerBlock">
           <label className="Test-UserAnswer">
-            <input type="radio" name="radio" className="Test-RadionButton" />
+            <input
+              type="radio"
+              name={`radio-${index}`}
+              className="Test-RadionButton"
+            />
             Знаю
           </label>
           <label className="Test-UserAnswer">
-            <input type="radio" name="radio" className="Test-RadionButton" />
+            <input
+              type="radio"
+              name={`radio-${index}`}
+              className="Test-RadionButton"
+            />
             Не знаю
           </label>
         </div>
