@@ -8,7 +8,8 @@ interface ITest {
 }
 
 function Test({ data }: ITest) {
-  const [answerId, setAnswerId] = useState(null);
+  const [answerId, setAnswerId] = useState<number | null>(null);
+  const [answers, setAnswer] = useState<number[]>([]);
 
   const handleSetAnswerId = (id: any) => {
     if (id === answerId) {
@@ -17,6 +18,16 @@ function Test({ data }: ITest) {
       setAnswerId(id);
     }
   };
+
+  const handleAddAnswer = (id: any) => {
+    answers.filter((answer: any) => answer === id).length === 0 &&
+      setAnswer([...answers, id]);
+  };
+
+  const handleSubmitTest = () => {
+    answers.length === data.length ? console.log("OVER") : console.log("Ответьте на все вопросы")
+    
+  }
 
   const renderData = () =>
     data.map((item: any, index: number) => (
@@ -28,7 +39,10 @@ function Test({ data }: ITest) {
           </span>
           <p>{item.question}</p>
         </div>
-        <div className="Test-UserAnswerBlock">
+        <div
+          className="Test-UserAnswerBlock"
+          onChange={() => handleAddAnswer(item.id)}
+        >
           <label className="Test-UserAnswer">
             <input
               type="radio"
@@ -72,7 +86,7 @@ function Test({ data }: ITest) {
   return (
     <div className="Test">
       <ul>{renderData()}</ul>
-      <Button title="Закончить тест" onClick={() => console.log("OVER")} />
+      <Button title="Закончить тест" onClick={handleSubmitTest} />
     </div>
   );
 }
