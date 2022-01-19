@@ -78,7 +78,9 @@ function Test({ data }: ITest) {
               "Test-Answer_opened": answerId === item.id,
             })}
           >
-            {item.answer}
+            {item.answer && <p>{item.answer}</p>}
+            {item.description &&
+              item.description.map((descrItem: string) => <p>{descrItem}</p>)}
           </div>
         </div>
       </li>

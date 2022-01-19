@@ -6,7 +6,18 @@
 }
 
 .Test-ListItem {
+  position: relative;
   margin-bottom: 30px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    width: 100%;
+    height: 1px;
+    opacity: 50%;
+    background-color: $grey;
+  }
 }
 
 .Test-QuestionNumber {

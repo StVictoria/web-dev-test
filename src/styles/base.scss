@@ -22,6 +22,11 @@
   border-radius: 10px;
 }
 
+::selection {
+  background: $purple;
+  color: $black;
+  }
+
 html,
 body {
   margin: 0;
