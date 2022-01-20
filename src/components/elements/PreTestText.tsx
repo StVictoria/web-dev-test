@@ -1,6 +1,6 @@
 import Button from "../common/Button";
 import "./PreTestText.scss";
-import RocketImg from "../../assets/images/shuttle.png";
+// import RocketImg from "../../assets/images/shuttle.png";
 import { TestNames } from "../../enums/testNames";
 
 interface IPreTestText {
@@ -11,7 +11,7 @@ interface IPreTestText {
 function PreTestText({ testName, handleClick }: IPreTestText) {
   const js = testName === TestNames.JavaScript;
   const react = testName === TestNames.React;
-  const redux = testName === TestNames.Redux;
+  // const redux = testName === TestNames.Redux;
 
   return (
     <>

@@ -32,7 +32,7 @@ function Test({ data }: ITest) {
 
   const renderData = () =>
     data.map((item: any, index: number) => (
-      <li className="Test-ListItem" key={item.id}>
+      <li className="Test-ListItem" key={index}>
         <div className="Test-Question">
           <span className="Test-QuestionNumber">{index + 1}.</span>{" "}
           <span className="Test-QuestionTheme">
