@@ -9,7 +9,7 @@ interface ITest {
 
 function Test({ data }: ITest) {
   const [answerId, setAnswerId] = useState<number | null>(null);
-  const [answers, setAnswer] = useState<number[]>([]);
+  const [answers, setAnswer] = useState<number[]>([]); 
 
   const handleSetAnswerId = (id: any) => {
     if (id === answerId) {
@@ -80,7 +80,9 @@ function Test({ data }: ITest) {
           >
             {item.answer && <p>{item.answer}</p>}
             {item.description &&
-              item.description.map((descrItem: string) => <p>{descrItem}</p>)}
+              item.description.map((descrItem: string, index: number) => (
+                <p key={index}>{descrItem}</p>
+              ))}
           </div>
         </div>
       </li>

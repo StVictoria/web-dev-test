@@ -6,7 +6,7 @@ import SectionTitle from "../common/SectionTitle";
 import { TestNames } from "../../enums/testNames";
 import PreTestText from "../elements/PreTestText";
 import Test from "../elements/Test";
-import javascriptData from '../../utils/javascriptData.json'
+import { filterData } from "../../utils/service";
 import "./TestPage.scss";
 
 interface ITestPage {
@@ -14,7 +14,7 @@ interface ITestPage {
 }
 
 function TestPage({ testName }: ITestPage) {
-  const [isStarted, setStarted] = useState(false);
+  const [isStarted, setStarted] = useState<boolean>(false);
 
   const startTest = () => setStarted(true);
 
@@ -37,7 +37,7 @@ function TestPage({ testName }: ITestPage) {
       {!isStarted ? (
         <PreTestText testName={testName} handleClick={startTest} />
       ) : (
-        <Test data={TestNames.JavaScript ? javascriptData.data : null}/>
+        <Test data={TestNames.JavaScript ? filterData(TestNames.JavaScript, 30, null) : null} />
       )}
     </>
   );
