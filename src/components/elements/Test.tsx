@@ -11,6 +11,14 @@ function Test({ data }: ITest) {
   const [answerId, setAnswerId] = useState<number | null>(null);
   const [answers, setAnswer] = useState<number[]>([]);
 
+  window.onbeforeunload = function () {
+    if (answers.length !== 0) {
+      return true;
+    } else {
+      return null;
+    }
+  };
+
   const handleSetAnswerId = (id: any) => {
     if (id === answerId) {
       setAnswerId(null);
@@ -81,7 +89,7 @@ function Test({ data }: ITest) {
             {typeof item.answer === "string" ? (
               <p>{item.answer}</p>
             ) : (
-              item.answer.map((answerItem: string, index: number) => (
+              item.answer?.map((answerItem: string, index: number) => (
                 <p key={index}>{answerItem}</p>
               ))
             )}
