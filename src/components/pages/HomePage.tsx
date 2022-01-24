@@ -7,15 +7,26 @@ import InstagramImg from "../../assets/images/instagram.png";
 import "./HomePage.scss";
 import { TestNames } from "../../enums/testNames";
 
+const technologies: any = [
+  { id: 1, title: TestNames.JavaScript, src: JSImg, isDisable: false },
+  { id: 2, title: TestNames.React, src: ReactImg, isDisable: true },
+  { id: 3, title: TestNames.Redux, src: ReduxImg, isDisable: true },
+];
+
 function HomePage() {
   return (
     <>
       <section className="HomePage-Section">
         <SectionTitle title="Доступные тесты" />
         <div className="HomePage-TechnologyList">
-          <TechnologyTile isAvaliable={true} src={JSImg} technology={TestNames.JavaScript} />
-          <TechnologyTile isDisable isAvaliable={false} src={ReactImg} technology={TestNames.React}/>
-          <TechnologyTile isDisable isAvaliable={false} src={ReduxImg} technology={TestNames.Redux}/>
+          {technologies.map((technology: any) => (
+            <TechnologyTile
+              key={technology.id}
+              isDisable={technology.isDisable}
+              src={technology.src}
+              technology={technology.title}
+            />
+          ))}
         </div>
       </section>
       <section className="HomePage-Section">
@@ -31,7 +42,7 @@ function HomePage() {
               href="https://www.instagram.com/victoria_step_nova/"
               className="HomePage-InstagramLink"
             >
-              <img src={InstagramImg} alt="Instagram Contact"/>
+              <img src={InstagramImg} alt="Instagram Contact" />
             </a>
             <p>
               Так же приятно услышать общие отзывы об опыте использования сайта
