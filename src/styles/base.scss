@@ -91,3 +91,9 @@ input[type="radio"]::before {
 input[type="radio"]:checked::before {
   transform: scale(1);
 }
+
+label {
+  display: flex;
+  margin-right: 10px;
+  cursor: pointer;
+}

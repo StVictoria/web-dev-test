@@ -32,9 +32,9 @@ function Test({ data }: ITest) {
       setAnswer([...answers, id]);
   };
 
-  const handleSubmitTest = () => {
+  const handleSubmitTest = () => () => {
     answers.length === data.length
-      ? console.log("OVER")
+      ? console.log("OVER", answers)
       : console.log("Ответьте на все вопросы");
   };
 

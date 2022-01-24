@@ -6,9 +6,10 @@ import { TestNames } from "../../enums/testNames";
 interface IPreTestText {
   testName: string;
   handleClick: () => void;
+  onSetAmount: (e: any) => void;
 }
 
-function PreTestText({ testName, handleClick }: IPreTestText) {
+function PreTestText({ testName, handleClick, onSetAmount }: IPreTestText) {
   const js = testName === TestNames.JavaScript;
   const react = testName === TestNames.React;
   // const redux = testName === TestNames.Redux;
@@ -17,14 +18,13 @@ function PreTestText({ testName, handleClick }: IPreTestText) {
     <>
       <div className="PreTestText">
         <p>
-          Тесты здесь отличаются от тех, к которым мы
-          привыкли. Эти тесты скорее похожи на билеты, контроль ответов на
-          которые остаётся за студентом.
+          Тесты здесь отличаются от тех, к которым мы привыкли. Эти тесты скорее
+          похожи на билеты, контроль ответов на которые остаётся за студентом.
         </p>
         <p>
-          Когда появится вопрос, необходимо будет отметить знаешь ты ответ или нет.
-          Хорошо подумай и ответь сам себе как можно более развёрнуто, вспомни
-          каке-то детали, которые относятся к вопросу.
+          Когда появится вопрос, необходимо будет отметить знаешь ты ответ или
+          нет. Хорошо подумай и ответь сам себе как можно более развёрнуто,
+          вспомни каке-то детали, которые относятся к вопросу.
         </p>
         <p>
           После выбора появится блок содержащий ответ на главный вопрос. Если ты
@@ -67,6 +67,25 @@ function PreTestText({ testName, handleClick }: IPreTestText) {
         Если ты не знаешь данную технологию, лучше сначала ознакомиться с
         документацией
       </p>
+      <p>Выбери необходимое кол-во вопросов:</p>
+      <div className="PreTest-Amount" onChange={(e) => onSetAmount(e)}>
+        <label className="PreTest-Amount">
+          <input type="radio" name="radio-amount" value="15" />
+          15
+        </label>
+        <label className="PreTest-Amount">
+          <input type="radio" name="radio-amount" value="30" />
+          30
+        </label>
+        <label className="PreTest-Amount">
+          <input type="radio" name="radio-amount" value="45" />
+          45
+        </label>
+        <label className="PreTest-Amount">
+          <input type="radio" name="radio-amount" value="60" />
+          60
+        </label>
+      </div>
       <Button title="Начать тест" onClick={handleClick} />
     </>
   );
