@@ -1,9 +1,17 @@
+@import "../../styles/mixins.scss";
+
 .HomePage-Section {
   margin-bottom: 80px;
 }
 
 .HomePage-TechnologyList {
   display: flex;
+  flex-wrap: wrap;
+
+  @include medium {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 .HomePage-InstagramBlock {
@@ -19,7 +27,7 @@
     width: inherit;
   }
 
-  p{
-      margin-top: 6px;
+  p {
+    margin-top: 6px;
   }
 }

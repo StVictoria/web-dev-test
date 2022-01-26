@@ -1,10 +1,31 @@
+@import "../../styles/mixins.scss";
+
 .TechnologyTile {
   position: relative;
   width: 200px;
   height: 200px;
 
+  @include large {
+    width: 150px;
+    height: 150px;
+  }
+
+  @include medium {
+    width: 100px;
+    height: 100px;
+  }
+
+  @include small {
+    width: 80px;
+    height: 80px;
+  }
+
   &:not(:last-child) {
     margin-right: 100px;
+
+    @include medium {
+      margin-right: 0;
+    }
   }
 
   &:hover {
