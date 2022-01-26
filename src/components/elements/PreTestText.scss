@@ -1,20 +1,29 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
-.PreTestText{
+.PreTestText {
   max-width: 60%;
+
+  @include large {
+    max-width: 100%;
+  }
+}
+
+.PreTestText-Rules {
+  font-size: 14px;
+  margin-left: 18px;
 }
 
 .PreTestText-DocsInfo {
   font-size: 14px;
   color: $grey;
-  max-width: 50%;
 }
 
-.PreTestText-Link{
+.PreTestText-Link {
   color: $mint;
 }
 
-.PreTest-Amount{
+.PreTest-Amount {
   display: flex;
   margin-bottom: 10px;
 }
