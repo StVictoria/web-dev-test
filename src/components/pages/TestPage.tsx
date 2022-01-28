@@ -3,7 +3,7 @@ import JSImg from "../../assets/images/javascript.png";
 import ReactImg from "../../assets/images/react.png";
 import ReduxImg from "../../assets/images/redux.png";
 import SectionTitle from "../common/SectionTitle";
-import { TestNames } from "../../enums/testNames";
+import { TestNames } from "../../enums/testEnums";
 import PreTestText from "../elements/PreTestText";
 import Test from "../elements/Test";
 import { filterData } from "../../utils/service";

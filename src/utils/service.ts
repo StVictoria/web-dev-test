@@ -1,4 +1,4 @@
-import { TestNames } from "../enums/testNames";
+import { TestNames } from "../enums/testEnums";
 import JavaScript from "./javascriptData.json";
 
 const createTest = (data: any, amount: number) => {

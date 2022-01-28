@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./base/Header";
 import HomePage from "./pages/HomePage";
 import "./App.scss";
-import { TestNames } from "../enums/testNames";
+import { TestNames } from "../enums/testEnums";
 import TestPage from "./pages/TestPage";
 
 function App() {

@@ -5,7 +5,7 @@ import ReactImg from "../../assets/images/react.png";
 import ReduxImg from "../../assets/images/redux.png";
 import InstagramImg from "../../assets/images/instagram.png";
 import "./HomePage.scss";
-import { TestNames } from "../../enums/testNames";
+import { TestNames } from "../../enums/testEnums";
 
 const technologies: any = [
   { id: 1, title: TestNames.JavaScript, src: JSImg, isDisable: false },

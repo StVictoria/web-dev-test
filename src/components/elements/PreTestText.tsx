@@ -1,7 +1,7 @@
 import Button from "../common/Button";
 import "./PreTestText.scss";
 // import RocketImg from "../../assets/images/shuttle.png";
-import { TestNames } from "../../enums/testNames";
+import { TestNames } from "../../enums/testEnums";
 import { useState } from "react";
 
 interface IPreTestText {

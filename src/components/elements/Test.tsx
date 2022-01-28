@@ -3,6 +3,7 @@ import cn from "clsx";
 import "./Test.scss";
 import Button from "../common/Button";
 import { IAnswerObject } from "../../constants/types";
+import Dialog from "../common/Dialog";
 
 interface ITest {
   data: any;
@@ -11,14 +12,15 @@ interface ITest {
 function Test({ data }: ITest) {
   const [answerId, setAnswerId] = useState<number | null>(null);
   const [answers, setAnswer] = useState<IAnswerObject[] | []>([]);
+  const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
-  // window.onbeforeunload = function () {
-  //   if (answers.length !== 0) {
-  //     return true;
-  //   } else {
-  //     return null;
-  //   }
-  // };
+  window.onbeforeunload = function () {
+    if (answers.length !== 0) {
+      return true;
+    } else {
+      return null;
+    }
+  };
 
   const handleSetAnswerId = (id: any) => {
     if (id === answerId) {
@@ -34,16 +36,20 @@ function Test({ data }: ITest) {
     );
     if (!value) {
       setAnswer([...answers, { id, answer }]);
+      console.log(id, answer);
     } else if (value.answer !== answer) {
       let newAnswersArray = answers.filter((answer) => answer.id !== value?.id);
       setAnswer([...newAnswersArray, { id, answer }]);
+      console.log(id, answer);
     }
   };
+
+  const handleDialogToggle = () => setDialogOpen(!isDialogOpen);
 
   const handleSubmitTest = () => {
     answers.length === data.length
       ? console.log("OVER", answers)
-      : console.log("Ответьте на все вопросы");
+      : console.log(answers);
   };
 
   const renderData = () =>
@@ -111,7 +117,12 @@ function Test({ data }: ITest) {
   return (
     <div className="Test">
       <ul>{renderData()}</ul>
-      <Button title="Закончить тест" onClick={() => console.log("submit")} />
+      <Button title="Закончить тест" onClick={handleSubmitTest} />
+      <Dialog
+        isOpen={isDialogOpen}
+        text="Заполните, пожалуйста, все ответы"
+        onClose={handleDialogToggle}
+      />
     </div>
   );
 }
