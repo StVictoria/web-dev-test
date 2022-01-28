@@ -2,6 +2,7 @@ import { useState } from "react";
 import cn from "clsx";
 import "./Test.scss";
 import Button from "../common/Button";
+import { IAnswerObject } from "../../constants/types";
 
 interface ITest {
   data: any;
@@ -9,15 +10,15 @@ interface ITest {
 
 function Test({ data }: ITest) {
   const [answerId, setAnswerId] = useState<number | null>(null);
-  const [answers, setAnswer] = useState<number[]>([]);
+  const [answers, setAnswer] = useState<IAnswerObject[] | []>([]);
 
-  window.onbeforeunload = function () {
-    if (answers.length !== 0) {
-      return true;
-    } else {
-      return null;
-    }
-  };
+  // window.onbeforeunload = function () {
+  //   if (answers.length !== 0) {
+  //     return true;
+  //   } else {
+  //     return null;
+  //   }
+  // };
 
   const handleSetAnswerId = (id: any) => {
     if (id === answerId) {
@@ -27,9 +28,16 @@ function Test({ data }: ITest) {
     }
   };
 
-  const handleAddAnswer = (id: any) => {
-    answers.filter((answer: any) => answer === id).length === 0 &&
-      setAnswer([...answers, id]);
+  const handleAddAnswer = (id: number, answer: string) => {
+    let value: IAnswerObject | undefined = answers.find(
+      (answer: IAnswerObject) => answer.id === id
+    );
+    if (!value) {
+      setAnswer([...answers, { id, answer }]);
+    } else if (value.answer !== answer) {
+      let newAnswersArray = answers.filter((answer) => answer.id !== value?.id);
+      setAnswer([...newAnswersArray, { id, answer }]);
+    }
   };
 
   const handleSubmitTest = () => {
@@ -48,14 +56,15 @@ function Test({ data }: ITest) {
           </span>
           <p>{item.question}</p>
         </div>
-        <div
+        <form
           className="Test-UserAnswerBlock"
-          onChange={() => handleAddAnswer(item.id)}
+          onChange={(e: any) => handleAddAnswer(item.id, e.target.value)}
         >
           <label className="Test-UserAnswer">
             <input
               type="radio"
               name={`radio-${index}`}
+              value="yes"
               className="Test-RadionButton"
             />
             Ответил(а) верно
@@ -64,11 +73,12 @@ function Test({ data }: ITest) {
             <input
               type="radio"
               name={`radio-${index}`}
+              value="no"
               className="Test-RadionButton"
             />
             Ответил(а) неверно
           </label>
-        </div>
+        </form>
         <div className="Test-AnswerBlock">
           <div
             className={cn(`Test-StyledAnswerDiv`, {
@@ -101,7 +111,7 @@ function Test({ data }: ITest) {
   return (
     <div className="Test">
       <ul>{renderData()}</ul>
-      <Button title="Закончить тест" onClick={handleSubmitTest} />
+      <Button title="Закончить тест" onClick={() => console.log("submit")} />
     </div>
   );
 }
