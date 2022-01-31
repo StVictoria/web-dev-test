@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import cn from "clsx";
 import "./Test.scss";
 import Button from "../common/Button";
@@ -13,6 +14,8 @@ function Test({ data }: ITest) {
   const [answerId, setAnswerId] = useState<number | null>(null);
   const [answers, setAnswer] = useState<IAnswerObject[] | []>([]);
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   window.onbeforeunload = function () {
     if (answers.length !== 0) {
@@ -36,7 +39,6 @@ function Test({ data }: ITest) {
     );
     if (!value) {
       setAnswer([...answers, { id, answer }]);
-      console.log(id, answer);
     } else if (value.answer !== answer) {
       let newAnswersArray = answers.filter((answer) => answer.id !== value?.id);
       setAnswer([...newAnswersArray, { id, answer }]);
@@ -46,9 +48,11 @@ function Test({ data }: ITest) {
   const handleDialogToggle = () => setDialogOpen(!isDialogOpen);
 
   const handleSubmitTest = () => {
-    answers.length === data.length
-      ? console.log("OVER", answers)
-      : console.log(answers);
+    if (answers.length === data.length) {
+      return navigate("/result");
+    } else {
+      setDialogOpen(!isDialogOpen);
+    }
   };
 
   const renderData = () =>
