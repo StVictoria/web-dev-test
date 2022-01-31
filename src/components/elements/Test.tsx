@@ -40,7 +40,6 @@ function Test({ data }: ITest) {
     } else if (value.answer !== answer) {
       let newAnswersArray = answers.filter((answer) => answer.id !== value?.id);
       setAnswer([...newAnswersArray, { id, answer }]);
-      console.log(id, answer);
     }
   };
 

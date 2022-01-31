@@ -2,9 +2,15 @@ import { TestNames } from "../enums/testEnums";
 import JavaScript from "./javascriptData.json";
 
 const createTest = (data: any, amount: number) => {
-  const questionsArray = [];
-  for (let i = 1; i <= amount; i++) {
-    questionsArray.push(data[Math.floor(Math.random() * data.length)]);
+  const questionsArray: any = [];
+  let seen = new Set();
+  while (questionsArray.length < amount) {
+    let randomNumber = Math.floor(Math.random() * data.length);
+    seen.add(randomNumber);
+    if (seen.size === questionsArray.length) {
+      continue;
+    }
+    questionsArray.push(data[randomNumber]);
   }
   return questionsArray;
 };
