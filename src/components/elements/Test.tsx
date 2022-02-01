@@ -1,31 +1,31 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useBeforeunload } from "react-beforeunload";
 import cn from "clsx";
 import "./Test.scss";
 import Button from "../common/Button";
-import { IAnswerObject } from "../../constants/types";
+import { IAnswerObject, IQuestionObject } from "../../constants/types";
 import Dialog from "../common/Dialog";
 
 interface ITest {
-  data: any;
+  data: IQuestionObject[] | null;
+  setStarted: (isStarted: boolean) => void;
 }
 
-function Test({ data }: ITest) {
+function Test({ data, setStarted }: ITest) {
   const [answerId, setAnswerId] = useState<number | null>(null);
   const [answers, setAnswer] = useState<IAnswerObject[] | []>([]);
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
-  window.onbeforeunload = function () {
+  useBeforeunload((e: any) => {
     if (answers.length !== 0) {
-      return true;
-    } else {
-      return null;
+      e.preventDefault();
     }
-  };
+  });
 
-  const handleSetAnswerId = (id: any) => {
+  const handleSetAnswerId = (id: number) => {
     if (id === answerId) {
       setAnswerId(null);
     } else {
@@ -48,7 +48,8 @@ function Test({ data }: ITest) {
   const handleDialogToggle = () => setDialogOpen(!isDialogOpen);
 
   const handleSubmitTest = () => {
-    if (answers.length === data.length) {
+    if (answers.length === data?.length) {
+      setStarted(false);
       return navigate("/result");
     } else {
       setDialogOpen(!isDialogOpen);
@@ -56,7 +57,7 @@ function Test({ data }: ITest) {
   };
 
   const renderData = () =>
-    data.map((item: any, index: number) => (
+    data?.map((item: IQuestionObject, index: number) => (
       <li className="Test-ListItem" key={index}>
         <div className="Test-Question">
           <span className="Test-QuestionNumber">{index + 1}.</span>{" "}

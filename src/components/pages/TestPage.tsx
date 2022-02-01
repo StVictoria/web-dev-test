@@ -15,11 +15,11 @@ interface ITestPage {
 
 function TestPage({ testName }: ITestPage) {
   const [isStarted, setStarted] = useState<boolean>(false);
-  const [amount, setAmount] = useState<number>(15)
+  const [amount, setAmount] = useState<number>(15);
 
   const startTest = () => setStarted(true);
 
-  const handleSetAmount = (e: any) => setAmount(e.target.value)
+  const handleSetAmount = (e: any) => setAmount(e.target.value);
 
   return (
     <>
@@ -38,9 +38,20 @@ function TestPage({ testName }: ITestPage) {
         <SectionTitle title={`Тест по ${testName}`} />
       </div>
       {!isStarted ? (
-        <PreTestText testName={testName} handleClick={startTest} onSetAmount={handleSetAmount}/>
+        <PreTestText
+          testName={testName}
+          handleClick={startTest}
+          onSetAmount={handleSetAmount}
+        />
       ) : (
-        <Test data={TestNames.JavaScript ? filterData(TestNames.JavaScript, amount, null) : null} />
+        <Test
+          data={
+            TestNames.JavaScript
+              ? filterData(TestNames.JavaScript, amount, null)
+              : null
+          }
+          setStarted={setStarted}
+        />
       )}
     </>
   );

@@ -2,12 +2,12 @@ import Button from "../common/Button";
 import "./PreTestText.scss";
 // import RocketImg from "../../assets/images/shuttle.png";
 import { TestNames } from "../../enums/testEnums";
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 
 interface IPreTestText {
   testName: string;
   handleClick: () => void;
-  onSetAmount: (e: any) => void;
+  onSetAmount: (e: SyntheticEvent) => void;
 }
 
 const textParagraphs: string[] = [

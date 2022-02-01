@@ -6,8 +6,9 @@ import ReduxImg from "../../assets/images/redux.png";
 import InstagramImg from "../../assets/images/instagram.png";
 import "./HomePage.scss";
 import { TestNames } from "../../enums/testEnums";
+import { ITechnology } from "../../constants/types";
 
-const technologies: any = [
+const technologies: ITechnology[] = [
   { id: 1, title: TestNames.JavaScript, src: JSImg, isDisable: false },
   { id: 2, title: TestNames.React, src: ReactImg, isDisable: true },
   { id: 3, title: TestNames.Redux, src: ReduxImg, isDisable: true },
@@ -19,7 +20,7 @@ function HomePage() {
       <section className="HomePage-Section">
         <SectionTitle title="Доступные тесты" />
         <div className="HomePage-TechnologyList">
-          {technologies.map((technology: any) => (
+          {technologies.map((technology: ITechnology) => (
             <TechnologyTile
               key={technology.id}
               isDisable={technology.isDisable}
