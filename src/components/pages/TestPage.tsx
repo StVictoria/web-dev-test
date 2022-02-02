@@ -8,6 +8,7 @@ import PreTestText from "../elements/PreTestText";
 import Test from "../elements/Test";
 import { filterData } from "../../utils/service";
 import "./TestPage.scss";
+import Result from "../elements/Result";
 
 interface ITestPage {
   testName: string;
@@ -15,6 +16,7 @@ interface ITestPage {
 
 function TestPage({ testName }: ITestPage) {
   const [isStarted, setStarted] = useState<boolean>(false);
+  const [isDone, setDone] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(15);
 
   const startTest = () => setStarted(true);
@@ -37,21 +39,26 @@ function TestPage({ testName }: ITestPage) {
         />
         <SectionTitle title={`Тест по ${testName}`} />
       </div>
-      {!isStarted ? (
-        <PreTestText
-          testName={testName}
-          handleClick={startTest}
-          onSetAmount={handleSetAmount}
-        />
+      {!isDone ? (
+        !isStarted ? (
+          <PreTestText
+            testName={testName}
+            handleClick={startTest}
+            onSetAmount={handleSetAmount}
+          />
+        ) : (
+          <Test
+            data={
+              TestNames.JavaScript
+                ? filterData(TestNames.JavaScript, amount, null)
+                : null
+            }
+            setStarted={setStarted}
+            setDone={setDone}
+          />
+        )
       ) : (
-        <Test
-          data={
-            TestNames.JavaScript
-              ? filterData(TestNames.JavaScript, amount, null)
-              : null
-          }
-          setStarted={setStarted}
-        />
+        <Result />
       )}
     </>
   );

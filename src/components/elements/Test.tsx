@@ -10,14 +10,13 @@ import Dialog from "../common/Dialog";
 interface ITest {
   data: IQuestionObject[] | null;
   setStarted: (isStarted: boolean) => void;
+  setDone: (isDone: boolean) => void;
 }
 
-function Test({ data, setStarted }: ITest) {
+function Test({ data, setStarted, setDone }: ITest) {
   const [answerId, setAnswerId] = useState<number | null>(null);
   const [answers, setAnswer] = useState<IAnswerObject[] | []>([]);
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
-
-  const navigate = useNavigate();
 
   useBeforeunload((e: any) => {
     if (answers.length !== 0) {
@@ -49,8 +48,7 @@ function Test({ data, setStarted }: ITest) {
 
   const handleSubmitTest = () => {
     if (answers.length === data?.length) {
-      setStarted(false);
-      return navigate("/result");
+      setDone(true);
     } else {
       setDialogOpen(!isDialogOpen);
     }

@@ -4,7 +4,6 @@ import HomePage from "./pages/HomePage";
 import "./App.scss";
 import { TestNames } from "../enums/testEnums";
 import TestPage from "./pages/TestPage";
-import { ResultPage } from "./pages/ResultPage";
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
             path={`test/${TestNames.Redux}`}
             element={<TestPage testName={TestNames.Redux} />}
           />
-          <Route path="result" element={<ResultPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
