@@ -23,4 +23,14 @@
   border: 1px solid $mint;
   border-radius: 5px;
   padding: 10px;
+
+  &_error {
+    border: 1px solid $error;
+  }
+  &_warn {
+    border: 1px solid $warning;
+  }
+  &_success {
+    border: 1px solid $success;
+  }
 }

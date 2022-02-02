@@ -6,6 +6,7 @@ import "./Test.scss";
 import Button from "../common/Button";
 import { IAnswerObject, IQuestionObject } from "../../constants/types";
 import Dialog from "../common/Dialog";
+import { DialogTypes } from "../../enums/testEnums";
 
 interface ITest {
   data: IQuestionObject[] | null;
@@ -122,6 +123,7 @@ function Test({ data, setStarted, setDone }: ITest) {
       <Button title="Закончить тест" onClick={handleSubmitTest} />
       <Dialog
         isOpen={isDialogOpen}
+        type={DialogTypes.ERROR}
         text="Заполните, пожалуйста, все ответы"
         onClose={handleDialogToggle}
       />

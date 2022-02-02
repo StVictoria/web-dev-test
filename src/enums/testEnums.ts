@@ -4,8 +4,8 @@ export enum TestNames {
   Redux = "Redux",
 }
 
-export enum DialogType {
+export enum DialogTypes {
   WARNING = "WARNING",
   SUCCESS = "SUCCESS",
-  DANGER = "DANGER"
+  ERROR = "ERROR"
 }
