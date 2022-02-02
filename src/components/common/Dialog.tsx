@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import cn from "clsx";
 import Button from "./Button";
 import "./Dialog.scss";

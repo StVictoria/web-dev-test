@@ -14,6 +14,21 @@
   margin-left: 18px;
 }
 
+.PreTestText-RulesText {
+  position: relative;
+  margin-bottom: 20px;
+
+  &:not(:last-child):after {
+    position: absolute;
+    content: "";
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: $grey;
+  }
+}
+
 .PreTestText-DocsInfo {
   font-size: 14px;
   color: $grey;

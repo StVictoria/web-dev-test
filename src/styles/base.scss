@@ -54,6 +54,7 @@ button {
   color: $mint;
   font-size: 16px;
   padding: 0;
+  cursor: pointer;
 }
 
 a {
@@ -80,6 +81,7 @@ input[type="radio"] {
   margin-right: 8px;
   border: 2px currentColor;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 input[type="radio"]::before {
