@@ -7,7 +7,7 @@ export default function Result() {
   return (
     <div>
       {answers.map((answerItem: IAnswerObject) => (
-        <p>{answerItem.answer}</p>
+        <p key={answerItem.id}>{answerItem.answer}</p>
       ))}
     </div>
   );

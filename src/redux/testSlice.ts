@@ -13,20 +13,18 @@ export const testSlice = createSlice({
   name: "test",
   initialState,
   reducers: {
-    addAnswer: (state, action: PayloadAction<IAnswerObject>) => {
-      // поменять на {answers}
-
-      let value: IAnswerObject | undefined = state.answers.find(
+    addAnswer: ({ answers }, action: PayloadAction<IAnswerObject>) => {
+      let value: IAnswerObject | undefined = answers.find(
         (answer: IAnswerObject) => answer.id === action.payload.id
       );
       if (!value) {
-        state.answers.push(action.payload);
+        answers.push(action.payload);
       } else if (value.answer !== action.payload.answer) {
-        let newAnswersArray = state.answers.filter(
+        let newAnswersArray = answers.filter(
           (answer) => answer.id !== value?.id
         );
-        state.answers = newAnswersArray;
-        state.answers.push(action.payload);
+        answers = newAnswersArray;
+        answers.push(action.payload);
       }
     },
   },

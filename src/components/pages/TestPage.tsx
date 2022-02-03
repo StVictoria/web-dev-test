@@ -53,7 +53,6 @@ function TestPage({ testName }: ITestPage) {
                 ? filterData(TestNames.JavaScript, amount, null)
                 : null
             }
-            setStarted={setStarted}
             setDone={setDone}
           />
         )

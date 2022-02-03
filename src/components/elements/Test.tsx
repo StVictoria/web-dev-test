@@ -3,7 +3,7 @@ import { useBeforeunload } from "react-beforeunload";
 import cn from "clsx";
 import "./Test.scss";
 import Button from "../common/Button";
-import { IAnswerObject, IQuestionObject } from "../../constants/types";
+import { IQuestionObject } from "../../constants/types";
 import Dialog from "../common/Dialog";
 import { DialogTypes } from "../../enums/testEnums";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,11 +12,10 @@ import { addAnswer } from "../../redux/testSlice";
 
 interface ITest {
   data: IQuestionObject[] | null;
-  setStarted: (isStarted: boolean) => void;
   setDone: (isDone: boolean) => void;
 }
 
-function Test({ data, setStarted, setDone }: ITest) {
+function Test({ data, setDone }: ITest) {
   const [answerId, setAnswerId] = useState<number | null>(null);
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
