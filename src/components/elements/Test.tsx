@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useBeforeunload } from "react-beforeunload";
 import cn from "clsx";
 import "./Test.scss";
@@ -7,6 +6,9 @@ import Button from "../common/Button";
 import { IAnswerObject, IQuestionObject } from "../../constants/types";
 import Dialog from "../common/Dialog";
 import { DialogTypes } from "../../enums/testEnums";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../redux/store";
+import { addAnswer } from "../../redux/testSlice";
 
 interface ITest {
   data: IQuestionObject[] | null;
@@ -16,8 +18,10 @@ interface ITest {
 
 function Test({ data, setStarted, setDone }: ITest) {
   const [answerId, setAnswerId] = useState<number | null>(null);
-  const [answers, setAnswer] = useState<IAnswerObject[] | []>([]);
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
+
+  const answers = useSelector(({ test }: RootState) => test.answers);
+  const dispatch = useDispatch();
 
   useBeforeunload((e: any) => {
     if (answers.length !== 0) {
@@ -34,15 +38,7 @@ function Test({ data, setStarted, setDone }: ITest) {
   };
 
   const handleAddAnswer = (id: number, answer: string) => {
-    let value: IAnswerObject | undefined = answers.find(
-      (answer: IAnswerObject) => answer.id === id
-    );
-    if (!value) {
-      setAnswer([...answers, { id, answer }]);
-    } else if (value.answer !== answer) {
-      let newAnswersArray = answers.filter((answer) => answer.id !== value?.id);
-      setAnswer([...newAnswersArray, { id, answer }]);
-    }
+    dispatch(addAnswer({ id, answer }));
   };
 
   const handleDialogToggle = () => setDialogOpen(!isDialogOpen);
