@@ -28,7 +28,7 @@ const textParagraphs: string[] = [
 //   "Главные цели теста - контроль знаний и помощь в становлении разработчиком.",
 // ];
 
-const amountValues: number[] = [15, 30, 45, 60];
+const amountValues: number[] = [3, 30, 45, 60];
 
 function PreTestText({ testName, handleClick, onSetAmount }: IPreTestText) {
   const [isOpened, setOpened] = useState(false);

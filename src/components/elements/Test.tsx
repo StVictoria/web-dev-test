@@ -3,24 +3,23 @@ import { useBeforeunload } from "react-beforeunload";
 import cn from "clsx";
 import "./Test.scss";
 import Button from "../common/Button";
-import { IQuestionObject } from "../../constants/types";
+import { IAnswerObject, IQuestionObject } from "../../constants/types";
 import Dialog from "../common/Dialog";
 import { DialogTypes } from "../../enums/testEnums";
-import { useSelector, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { RootState } from "../../redux/store";
 import { addAnswer } from "../../redux/testSlice";
 
 interface ITest {
   data: IQuestionObject[] | null;
+  answers: IAnswerObject[] | [];
   setDone: (isDone: boolean) => void;
+  addAnswer: (answer: IAnswerObject) => void;
 }
 
-function Test({ data, setDone }: ITest) {
+function Test({ data, answers, setDone, addAnswer }: ITest) {
   const [answerId, setAnswerId] = useState<number | null>(null);
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
-
-  const answers = useSelector(({ test }: RootState) => test.answers);
-  const dispatch = useDispatch();
 
   useBeforeunload((e: any) => {
     if (answers.length !== 0) {
@@ -37,7 +36,7 @@ function Test({ data, setDone }: ITest) {
   };
 
   const handleAddAnswer = (id: number, answer: string) => {
-    dispatch(addAnswer({ id, answer }));
+    addAnswer({ id, answer });
   };
 
   const handleDialogToggle = () => setDialogOpen(!isDialogOpen);
@@ -126,4 +125,12 @@ function Test({ data, setDone }: ITest) {
   );
 }
 
-export default Test;
+const mapStateToProps = ({ test }: RootState) => ({
+  answers: test.answers,
+});
+
+const mapDispatchToProps = {
+  addAnswer,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Test);

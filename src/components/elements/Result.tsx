@@ -1,9 +1,12 @@
-import { useSelector } from "react-redux";
+import { connect } from "react-redux";
 import { IAnswerObject } from "../../constants/types";
 import { RootState } from "../../redux/store";
 
-export default function Result() {
-  const answers = useSelector(({ test }: RootState) => test.answers);
+interface IResult {
+  answers: IAnswerObject[];
+}
+
+function Result({ answers }: IResult) {
   return (
     <div>
       {answers.map((answerItem: IAnswerObject) => (
@@ -12,3 +15,9 @@ export default function Result() {
     </div>
   );
 }
+
+const mapStateToProps = ({ test }: RootState) => ({
+  answers: test.answers,
+});
+
+export default connect(mapStateToProps)(Result);
