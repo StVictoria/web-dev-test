@@ -1,6 +1,7 @@
 import { IQuestionObject } from "../constants/types";
 import { TestNames } from "../enums/testEnums";
 import JavaScript from "./javascriptData.json";
+import Patterns from "./patternsData.json";
 
 const createTest = (data: IQuestionObject[], amount: number) => {
   const questionsArray: IQuestionObject[] = [];
@@ -23,6 +24,8 @@ export const filterData = (
 ) => {
   if (dataName === TestNames.JavaScript) {
     return createTest(JavaScript.data, amount);
+  } else if (dataName === TestNames.Patterns) {
+    return createTest(Patterns.data, amount);
   } else {
     return null;
   }

@@ -3,6 +3,7 @@ import TechnologyTile from "../common/TechnologyTile";
 import JSImg from "../../assets/images/javascript.png";
 import ReactImg from "../../assets/images/react.png";
 import ReduxImg from "../../assets/images/redux.png";
+import PatternsImg from "../../assets/images/patterns.png";
 import InstagramImg from "../../assets/images/instagram.png";
 import "./HomePage.scss";
 import { TestNames } from "../../enums/testEnums";
@@ -12,6 +13,7 @@ const technologies: ITechnology[] = [
   { id: 1, title: TestNames.JavaScript, src: JSImg, isDisable: false },
   { id: 2, title: TestNames.React, src: ReactImg, isDisable: true },
   { id: 3, title: TestNames.Redux, src: ReduxImg, isDisable: true },
+  { id: 4, title: TestNames.Patterns, src: PatternsImg, isDisable: false },
 ];
 
 function HomePage() {

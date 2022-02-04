@@ -23,6 +23,10 @@ function App() {
             path={`test/${TestNames.Redux}`}
             element={<TestPage testName={TestNames.Redux} />}
           />
+          <Route
+            path={`test/${TestNames.Patterns}`}
+            element={<TestPage testName={TestNames.Patterns} />}
+          />
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

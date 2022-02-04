@@ -70,7 +70,7 @@ function Test({ data, answers, setDone, addAnswer }: ITest) {
               value="yes"
               className="Test-RadionButton"
             />
-            Знаю ответ
+            Знаю
           </label>
           <label className="Test-UserAnswer">
             <input
@@ -79,7 +79,7 @@ function Test({ data, answers, setDone, addAnswer }: ITest) {
               value="no"
               className="Test-RadionButton"
             />
-            Не знаю ответ
+            Не знаю
           </label>
         </form>
         <div className="Test-AnswerBlock">

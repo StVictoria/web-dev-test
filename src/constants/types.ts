@@ -7,7 +7,7 @@ export interface IQuestionObject {
   id: number;
   block: string;
   topic: string;
-  level: string;
+  level?: string;
   question: string;
   answer: string | string[];
 }

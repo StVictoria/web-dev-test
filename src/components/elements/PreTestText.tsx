@@ -35,6 +35,7 @@ function PreTestText({ testName, handleClick, onSetAmount }: IPreTestText) {
 
   const js = testName === TestNames.JavaScript;
   const react = testName === TestNames.React;
+  const patterns = testName === TestNames.Patterns;
   // const redux = testName === TestNames.Redux;
 
   const handleOpenRules = () => setOpened(!isOpened);
@@ -78,11 +79,19 @@ function PreTestText({ testName, handleClick, onSetAmount }: IPreTestText) {
               ? "https://learn.javascript.ru/"
               : react
               ? "https://reactjs.org/"
+              : patterns
+              ? "https://refactoring.guru/ru/design-patterns"
               : "https://redux.js.org/"
           }
           className="PreTestText-Link"
         >
-          {js ? "JavaScript" : react ? "React" : "Redux"}
+          {js
+            ? "JavaScript"
+            : react
+            ? "React"
+            : patterns
+            ? "Refactoring Guru"
+            : "Redux"}
         </a>
       </p>
       <Button title="Начать тест" onClick={handleClick} />

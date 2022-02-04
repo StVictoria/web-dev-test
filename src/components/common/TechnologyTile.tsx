@@ -20,7 +20,7 @@ function TechnologyTile({ isDisable, src, technology }: ITechnologyTile) {
         })}
       />
       <span className="TechnologyTile-Tint">
-        {isDisable ? "Этот тест пока что недоступен" : "Перейти к тесту"}
+        {isDisable && "Этот тест пока что недоступен"}
       </span>
     </div>
   );

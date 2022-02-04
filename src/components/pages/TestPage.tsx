@@ -2,6 +2,7 @@ import { useState } from "react";
 import JSImg from "../../assets/images/javascript.png";
 import ReactImg from "../../assets/images/react.png";
 import ReduxImg from "../../assets/images/redux.png";
+import PatternsImg from "../../assets/images/patterns.png";
 import SectionTitle from "../common/SectionTitle";
 import { TestNames } from "../../enums/testEnums";
 import PreTestText from "../elements/PreTestText";
@@ -32,6 +33,8 @@ function TestPage({ testName }: ITestPage) {
               ? JSImg
               : testName === TestNames.React
               ? ReactImg
+              : testName === TestNames.Patterns
+              ? PatternsImg
               : ReduxImg
           }
           alt={testName}
