@@ -47,14 +47,7 @@ function TestPage({ testName }: ITestPage) {
             onSetAmount={handleSetAmount}
           />
         ) : (
-          <Test
-            data={
-              TestNames.JavaScript
-                ? filterData(TestNames.JavaScript, amount, null)
-                : null
-            }
-            setDone={setDone}
-          />
+          <Test data={filterData(testName, amount, null)} setDone={setDone} />
         )
       ) : (
         <Result />
