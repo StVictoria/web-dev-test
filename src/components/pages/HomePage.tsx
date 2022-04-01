@@ -14,6 +14,7 @@ const technologies: ITechnology[] = [
   { id: 2, title: TestNames.React, src: ReactImg, isDisable: true },
   { id: 3, title: TestNames.Redux, src: ReduxImg, isDisable: true },
   { id: 4, title: TestNames.Patterns, src: PatternsImg, isDisable: false },
+  { id: 5, title: TestNames.InterviewJS, src: PatternsImg, isDisable: false },
 ];
 
 function HomePage() {

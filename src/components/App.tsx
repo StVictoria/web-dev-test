@@ -27,6 +27,10 @@ function App() {
             path={`test/${TestNames.Patterns}`}
             element={<TestPage testName={TestNames.Patterns} />}
           />
+          <Route
+            path={`test/${TestNames.InterviewJS}`}
+            element={<TestPage testName={TestNames.InterviewJS} />}
+          />
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
